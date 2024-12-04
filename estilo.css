@@ -1,0 +1,199 @@
+/* Estilos básicos */
+.delius-regular {
+    font-family: "Delius", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white; 
+    background: repeating-linear-gradient(
+        90deg, #000000, #000000 50px, #151515 50px, #151515 100px
+    );
+}
+
+.nav {
+    background-color: #0A0A0A;
+    padding: 10px;
+    text-align: center;
+    position: relative; 
+}
+
+.nav__list {
+    list-style-type: none;
+    padding: 5px;
+    margin: 5px;
+}
+
+.nav__item {
+    display: inline;
+    margin-right: 15px;
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav__link:hover {
+    color: #1a1a1a;
+}
+
+/* Estilo del botón hamburguesa */
+.nav__hamburger {
+    display: none; 
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute; 
+    top: 10px;
+    right: 10px;
+}
+
+/* Ajustes de sección */
+.section {
+    padding: 50px;
+    text-align: center; 
+    border-bottom: 1px solid #ccc;
+}
+
+.footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #0A0A0A;
+    color: white;
+}
+
+.footer__link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer__link:hover {
+    color: #1a1a1a;
+}
+
+/* Contenedor de los botones */
+.button-container {
+    display: flex;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000000;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.button {
+    flex: 2;
+    padding: 5px 10px;
+    background-color: #0A0A0A;
+    color: grey;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.button--primary:hover {
+    background-color: #000000;
+    color: white;
+    flex-grow: 4;
+}
+
+.button--secondary:hover {
+    background-color: #151515;
+    color: white;
+    flex-grow: 8;
+}
+
+/* Media Queries */
+
+/* Dispositivos móviles pequeños (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .nav__hamburger {
+        display: block; /* Mostrar el botón hamburguesa */
+    }
+
+    .nav__list {
+        display: none; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #0A0A0A;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .nav__list.active {
+        display: block; 
+    }
+
+    .nav__item {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 10px;
+    }
+}
+
+/* Tablets (481px hasta 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .section {
+        padding: 30px;
+    }
+    
+    .button-container {
+        width: 80%;
+        margin: 10px auto;
+    }
+    
+    .nav {
+        padding: 15px;
+    }
+}
+
+/* Laptops y tablets grandes (769px hasta 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .section {
+        padding: 40px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .button-container {
+        width: 60%;
+        margin: 15px auto;
+    }
+    
+    body {
+        background: repeating-linear-gradient(
+            90deg, #000000, #000000 30px, #151515 30px, #151515 60px
+        );
+    }
+}
+
+/* Pantallas grandes (más de 1024px) */
+@media screen and (min-width: 1025px) {
+    .section {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .button-container {
+        width: 300px;
+    }
+}
