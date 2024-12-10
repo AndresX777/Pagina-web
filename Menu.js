@@ -1,23 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const navToggle = document.getElementById('menu-btn'); // Botón hamburguesa
-    const navList = document.getElementById('menu'); // Lista de navegación
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
 
-    // Mostrar/ocultar el menú al hacer clic en el botón
-    navToggle.addEventListener('click', function () {
-        navList.classList.toggle('active'); // Cambiar clase activa para mostrar/ocultar menú
-    });
-
-    // Cerrar el menú al hacer clic en un enlace
-    document.querySelectorAll('.nav__link').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            const isExpanded = menu.classList.contains('active');
+            menuBtn.setAttribute('aria-expanded', isExpanded);
+            menuBtn.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
         });
-    });
 
-    // Cerrar el menú al hacer clic fuera de él
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.nav') && navList.classList.contains('active')) {
-            navList.classList.remove('active');
-        }
-    });
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Abrir menú');
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        menu.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Abrir menú');
+            });
+        });
+    }
 });
